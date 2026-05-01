@@ -110,30 +110,48 @@ body {
 
 .card-container {
     display: flex;
-    gap: 10px;
+    gap: 14px;
     overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
     padding-bottom: 10px;
 }
 
-/* 스크롤바 숨기기 */
 .card-container::-webkit-scrollbar {
     display: none;
 }
 
 .card {
-    min-width: 200px;
-    height: 110px;
+    flex: 0 0 calc((100% - (14px * 3)) / 4);
+    min-width: 180px;
+    border-radius: 6px;
+    overflow: hidden;
     background-color: #2f2f2f;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 4px;
-    flex-shrink: 0;
 }
 
-.card.tall {
-    min-width: 150px;
-    height: 220px;
+.card img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.card:hover img {
+    transform: scale(1.08);
+}
+
+@media (max-width: 1024px) {
+    .card {
+        flex-basis: calc((100% - (14px * 2)) / 3);
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex-basis: calc((100% - 14px) / 2);
+        min-width: 160px;
+    }
 }
 
 /* 4. 푸터 */
